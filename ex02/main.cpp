@@ -17,13 +17,13 @@ void intTest()
 {
 	std::cout << "\n<<< int Test >>>" << std::endl;
     Array<int> numbers(MAX_VAL);
-    srand(static_cast<unsigned int>(time(NULL)));
+    std::srand(static_cast<unsigned int>(std::time(NULL)));
     std::cout << "\ndefault array" << std::endl;
     printArray(numbers);
 
     for (int i = 0; i < MAX_VAL; i++)
     {
-        const int value = rand();
+        const int value = std::rand();
         numbers[i] = value;
     }
 	std::cout << "\noriginal array" << std::endl;
@@ -36,7 +36,7 @@ void intTest()
     std::cout << "\nchanged array" << std::endl;
     for (int i = 0; i < MAX_VAL; i++)
     {
-        numbers[i] = rand();
+        numbers[i] = std::rand();
     }
     printArray(numbers);
     std::cout << "\noroginal deep copy assignment array" << std::endl;
