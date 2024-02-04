@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Array.hpp"
 #include "Array.tpp"
+#include <random>
 
 #define MAX_VAL 5
 
@@ -33,16 +34,20 @@ void intTest()
     tmp = numbers;
     Array<int> test(tmp);
 
-    std::cout << "\nchanged array" << std::endl;
     for (int i = 0; i < MAX_VAL; i++)
     {
         numbers[i] = std::rand();
     }
+    std::cout << "\nchanged array" << std::endl;
     printArray(numbers);
     std::cout << "\noroginal deep copy assignment array" << std::endl;
     printArray(tmp);
     std::cout << "\norigonal deep copy constructor array" << std::endl;
     printArray(test);
+
+    tmp = numbers;
+    std::cout << "changed deep copy assignment array" << std::endl;
+    printArray(tmp);
 
 	std::cout << "\nmirror test" << std::endl;
     int* mirror = new int[MAX_VAL];
@@ -76,9 +81,60 @@ void intTest()
     }
 }
 
+std::string generateRandomString(int length)
+{
+    const std::string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    std::random_device rd;
+    std::mt19937 generator(rd());
+    std::uniform_int_distribution<std::size_t> distribution(0, characters.size() - 1);
+
+    std::string randomString;
+    for (int i = 0; i < length; ++i) {
+        randomString += characters[distribution(generator)];
+    }
+    return randomString;
+}
+
+void stringTest()
+{
+	std::cout << "\n<<< string Test >>>" << std::endl;
+    Array<std::string> strings(MAX_VAL);
+    std::cout << "\ndefault array" << std::endl;
+    printArray(strings);
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const std::string str = generateRandomString(i + 1);
+        strings[i] = str;
+    }
+	std::cout << "\noriginal array" << std::endl;
+    printArray(strings);
+
+    Array<std::string> tmp;
+    tmp = strings;
+    Array<std::string> test(tmp);
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const std::string str = generateRandomString(i + 1);
+        strings[i] = str;
+    }
+    std::cout << "\nchanged array" << std::endl;
+    printArray(strings);
+    std::cout << "\noroginal deep copy assignment array" << std::endl;
+    printArray(tmp);
+    std::cout << "\norigonal deep copy constructor array" << std::endl;
+    printArray(test);
+
+    tmp = strings;
+    std::cout << "changed deep copy assignment array" << std::endl;
+    printArray(tmp);
+}
+
 int main(int, char**)
 {
     intTest();
+    stringTest();
     return 0;
 }
 

@@ -21,6 +21,7 @@ template <typename T>
 Array<T>::Array(Array const& other): _arraySize(other._arraySize)
 {
 	std::cout << GREEN << "Copy constructor called" << RESET << std::endl;
+	_elements = new T[_arraySize];
 	*this = other;
 }
 
