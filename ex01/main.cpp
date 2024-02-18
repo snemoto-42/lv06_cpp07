@@ -2,6 +2,7 @@
 
 int main(void)
 {
+	try
 	{
 		std::cout << "\n<<< int Test >>>" << std::endl;
 		int array[] = {1, 2, 3, 4, 5};
@@ -13,6 +14,11 @@ int main(void)
 		iter(array, size, incrementElement<int>);
 		iter(array, size, printElement<int>);
 	}
+	catch(std::exception const& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
 	{
 		std::cout << "\n<<< double Test >>>" << std::endl;
 		double array[] = {1.1, 2.2, 3.3, 4.4, 5.5};
@@ -24,6 +30,11 @@ int main(void)
 		iter(array, size, incrementElement<double>);
 		iter(array, size, printElement<double>);
 	}
+	catch(std::exception const& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
 	{
 		std::cout << "\n<<< std::string Test >>>" << std::endl;
 		std::string array[] = {"This", "is", "iter", "test!"};
@@ -32,6 +43,11 @@ int main(void)
 		std::cout << "print array" << std::endl;
 		iter(array, size, printElement<std::string>);
 	}
+	catch(std::exception const& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
 	{
 		std::cout << "\n<<< char Test >>>" << std::endl;
 		char array[] = {'a', 'b', 'c', 'd', 'e'};
@@ -43,6 +59,11 @@ int main(void)
 		iter(array, size, incrementElement<char>);
 		iter(array, size, printElement<char>);
 	}
+	catch(std::exception const& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
 	{
 		std::cout << "\n<<< char pointer Test >>>" << std::endl;
 		char array_original[] = {'a', 'b', 'c', 'd', 'e'};
@@ -55,6 +76,11 @@ int main(void)
 		iter(array, size, incrementElement<char*>);
 		iter(array, size, printElement<char*>);
 	}
+	catch(std::exception const& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
 	{
 		std::cout << "\n<<< char reference Test >>>" << std::endl;
 		char array[] = {'a', 'b', 'c', 'd', 'e'};
@@ -66,12 +92,29 @@ int main(void)
 		iter(array, size, incrementElement<char&>);
 		iter(array, size, printElement<char&>);
 	}
+	catch(std::exception const& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	// try
+	// {
+	// 	std::cout << "\n<<< NULL Test >>>" << std::endl;
+	// 	char array[] = {'a', 'b', 'c', 'd', 'e'};
+	// 	size_t size = sizeof(array) / sizeof(char&);
+
+	// 	iter(NULL, size, printElement<char&>);
+	// 	iter(array, size, NULL);
+	// }
+	// catch(const std::exception& e)
+	// {
+	// 	std::cerr << e.what() << '\n';
+	// }
 	return 0;
 }
 
-#include <libc.h>
-__attribute__((destructor))
-static void destructor() {
-std::cout << "\n";
-system("leaks -q test");
-}
+// #include <libc.h>
+// __attribute__((destructor))
+// static void destructor() {
+// std::cout << "\n";
+// system("leaks -q test");
+// }
