@@ -107,9 +107,6 @@ int main(void)
 
 		std::cout << "print array" << std::endl;
 		iter(array, size, printElement);
-		// std::cout << "increment and print array" << std::endl;
-		// iter(array, size, incrementElement);
-		// iter(array, size, printElement);
 	}
 	catch(std::exception const& e)
 	{
@@ -123,9 +120,6 @@ int main(void)
 
 		std::cout << "print array" << std::endl;
 		iter(array, size, printElement);
-		// std::cout << "increment and print array" << std::endl;
-		// iter(array, size, incrementElement);
-		// iter(array, size, printElement);
 	}
 	catch(std::exception const& e)
 	{
@@ -152,26 +146,6 @@ int main(void)
 
 		std::cout << "print array" << std::endl;
 		iter(array, size, printElement);
-		// std::cout << "increment and print array" << std::endl;
-		// iter(array, size, incrementElement);
-		// iter(array, size, printElement);
-	}
-	catch(std::exception const& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	try
-	{
-		std::cout << "\n<<< char pointer Test >>>" << std::endl;
-		const char array_original[] = {'a', 'b', 'c', 'd', 'e'};
-		const char* array[] = {&array_original[0], &array_original[1], &array_original[2], &array_original[3], &array_original[4]};
-		size_t size = sizeof(array) / sizeof(char*);
-
-		std::cout << "print array" << std::endl;
-		iter(array, size, printElement);
-		// std::cout << "increment and print array" << std::endl;
-		// iter(array, size, incrementElement);
-		// iter(array, size, printElement);
 	}
 	catch(std::exception const& e)
 	{
@@ -185,28 +159,32 @@ int main(void)
 
 		std::cout << "print array" << std::endl;
 		iter(array, size, printElement);
-		// std::cout << "increment and print array" << std::endl;
-		// iter(array, size, incrementElement);
-		// iter(array, size, printElement);
 	}
 	catch(std::exception const& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
 
-	// // try
-	// // {
-	// // 	std::cout << "\n<<< NULL Test >>>" << std::endl;
-	// // 	char array[] = {'a', 'b', 'c', 'd', 'e'};
-	// // 	size_t size = sizeof(array) / sizeof(char&);
-
-	// // 	iter(NULL, size, printElement<char&>);
-	// // 	iter(array, size, NULL);
-	// // }
-	// // catch(const std::exception& e)
-	// // {
-	// // 	std::cerr << e.what() << '\n';
-	// // }
+	try
+	{
+		std::cout << "\n<<< NULL Test >>>" << std::endl;
+		char *array = NULL;
+		iter(array, 0, printElement);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		std::cout << "\n<<< NULL Test >>>" << std::endl;
+		const char *array = NULL;
+		iter(array, 0, printElement);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return 0;
 }
 
