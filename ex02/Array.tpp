@@ -15,8 +15,6 @@ Array<T>::Array(unsigned int n): _arraySize(n)
 	try
 	{
 		_elements = new T[_arraySize]();
-		// for (unsigned int idx = 0; idx < _arraySize; ++idx)
-		// 	_elements[idx] = T();
 	}
 	catch(const std::exception& e)
 	{
