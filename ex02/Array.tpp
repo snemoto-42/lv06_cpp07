@@ -12,16 +12,30 @@ template <typename T>
 Array<T>::Array(unsigned int n): _arraySize(n)
 {
 	std::cout << GREEN << "Constructor with argment called" << RESET << std::endl;
-	_elements = new T[_arraySize];
-	for (unsigned int idx = 0; idx < _arraySize; ++idx)
-		_elements[idx] = T();
+	try
+	{
+		_elements = new T[_arraySize]();
+		// for (unsigned int idx = 0; idx < _arraySize; ++idx)
+		// 	_elements[idx] = T();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}	
 }
 
 template <typename T>
 Array<T>::Array(Array const& other): _arraySize(other._arraySize)
 {
 	std::cout << GREEN << "Copy constructor called" << RESET << std::endl;
-	_elements = new T[_arraySize];
+	try
+	{
+		_elements = new T[_arraySize]();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}	
 	*this = other;
 }
 
@@ -33,9 +47,16 @@ Array<T> & Array<T>::operator=(Array const& other)
 	{
 		delete[] _elements;
 		_arraySize = other._arraySize;
-		_elements = new T[_arraySize];
-		for (unsigned int idx = 0; idx < _arraySize; ++idx)
-			_elements[idx] = other._elements[idx];
+		try
+		{
+			_elements = new T[_arraySize];
+			for (unsigned int idx = 0; idx < _arraySize; ++idx)
+				_elements[idx] = other._elements[idx];
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
 	return *this;
 }

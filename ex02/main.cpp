@@ -50,17 +50,24 @@ void intTest()
     printArray(tmp);
 
 	std::cout << "\nmirror test" << std::endl;
-    int* mirror = new int[MAX_VAL];
-    for (int i = 0; i < MAX_VAL; i++)
-        mirror[i] = numbers[i];
-    for (int i = 0; i < MAX_VAL; i++)
+    try
     {
-        if (mirror[i] != numbers[i])
-            std::cerr << "didn't save the same value!!" << std::endl;
-        else
-            std::cout << i << " index is the same" << std::endl;
+        int* mirror = new int[MAX_VAL];
+        for (int i = 0; i < MAX_VAL; i++)
+            mirror[i] = numbers[i];
+        for (int i = 0; i < MAX_VAL; i++)
+        {
+            if (mirror[i] != numbers[i])
+                std::cerr << "didn't save the same value!!" << std::endl;
+            else
+                std::cout << i << " index is the same" << std::endl;
+        }
+        delete [] mirror;
     }
-    delete [] mirror;
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }    
 
 	std::cout << "\n<<< Error Test >>>" << std::endl;
     try
