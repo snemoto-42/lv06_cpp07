@@ -16,7 +16,8 @@ class Array
 		Array(Array const&);
 		Array & operator=(Array const&);
 
-		T & operator[](int) const;
+		T & operator[](int);
+		T const& operator[](int) const;
 		size_t size(void) const;
 
 	private:

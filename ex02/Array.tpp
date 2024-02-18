@@ -69,7 +69,15 @@ Array<T>::~Array()
 }
 
 template <typename T>
-T& Array<T>::operator[](int idx) const
+T& Array<T>::operator[](int idx)
+{
+	if (static_cast<unsigned int>(idx) >= _arraySize)
+		throw std::out_of_range("Index out of bounds");
+	return _elements[idx];
+}
+
+template <typename T>
+T const& Array<T>::operator[](int idx) const
 {
 	if (static_cast<unsigned int>(idx) >= _arraySize)
 		throw std::out_of_range("Index out of bounds");

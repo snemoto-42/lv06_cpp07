@@ -49,6 +49,11 @@ void intTest()
     std::cout << "changed deep copy assignment array" << std::endl;
     printArray(tmp);
 
+	std::cout << "\n[] test" << std::endl;
+    std::cout << numbers[0] << std::endl;
+    ++numbers[0];
+    std::cout << numbers[0] << std::endl;
+
 	std::cout << "\nmirror test" << std::endl;
     try
     {
