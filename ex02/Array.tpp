@@ -69,7 +69,7 @@ Array<T>::~Array()
 }
 
 template <typename T>
-T& Array<T>::operator[](int idx)
+T & Array<T>::operator[](int idx)
 {
 	if (static_cast<unsigned int>(idx) >= _arraySize)
 		throw std::out_of_range("Index out of bounds");

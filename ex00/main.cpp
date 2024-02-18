@@ -76,9 +76,9 @@ int main(void)
 	return 0;
 }
 
-#include <libc.h>
-__attribute__((destructor))
-static void destructor() {
-std::cout << "\n";
-system("leaks -q test");
-}
+// #include <libc.h>
+// __attribute__((destructor))
+// static void destructor() {
+// std::cout << "\n";
+// system("leaks -q test");
+// }

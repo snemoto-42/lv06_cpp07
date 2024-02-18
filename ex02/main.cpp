@@ -94,19 +94,19 @@ void intTest()
     }
 }
 
-std::string generateRandomString(int length)
-{
-    const std::string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    std::random_device rd;
-    std::mt19937 generator(rd());
-    std::uniform_int_distribution<std::size_t> distribution(0, characters.size() - 1);
+// std::string generateRandomString(int length)
+// {
+//     const std::string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+//     std::random_device rd;
+//     std::mt19937 generator(rd());
+//     std::uniform_int_distribution<std::size_t> distribution(0, characters.size() - 1);
 
-    std::string randomString;
-    for (int i = 0; i < length; ++i) {
-        randomString += characters[distribution(generator)];
-    }
-    return randomString;
-}
+//     std::string randomString;
+//     for (int i = 0; i < length; ++i) {
+//         randomString += characters[distribution(generator)];
+//     }
+//     return randomString;
+// }
 
 void stringTest()
 {
@@ -117,7 +117,8 @@ void stringTest()
 
     for (int i = 0; i < MAX_VAL; i++)
     {
-        const std::string str = generateRandomString(i + 1);
+        // const std::string str = generateRandomString(i + 1);
+        std::string const str = "original";
         strings[i] = str;
     }
 	std::cout << "\noriginal array" << std::endl;
@@ -129,14 +130,15 @@ void stringTest()
 
     for (int i = 0; i < MAX_VAL; i++)
     {
-        const std::string str = generateRandomString(i + 1);
+        // const std::string str = generateRandomString(i + 1);
+        std::string const str = "changed";
         strings[i] = str;
     }
     std::cout << "\nchanged array" << std::endl;
     printArray(strings);
-    std::cout << "\noroginal deep copy assignment array" << std::endl;
+    std::cout << "\noriginal deep copy assignment array" << std::endl;
     printArray(tmp);
-    std::cout << "\norigonal deep copy constructor array" << std::endl;
+    std::cout << "\noriginal deep copy constructor array" << std::endl;
     printArray(test);
 
     tmp = strings;
@@ -151,9 +153,9 @@ int main(int, char**)
     return 0;
 }
 
-#include <libc.h>
-__attribute__((destructor))
-static void destructor() {
-std::cout << "\n";
-system("leaks -q test");
-}
+// #include <libc.h>
+// __attribute__((destructor))
+// static void destructor() {
+// std::cout << "\n";
+// system("leaks -q test");
+// }
