@@ -31,6 +31,7 @@ void intTest()
     printArray(numbers);
 
     Array<int> tmp;
+    std::cout << tmp.size() << std::endl;
     tmp = numbers;
     Array<int> test(tmp);
 

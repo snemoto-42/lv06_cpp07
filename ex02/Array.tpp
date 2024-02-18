@@ -3,7 +3,7 @@
 #include "Array.hpp"
 
 template <typename T>
-Array<T>::Array(): _elements(NULL),_arraySize(0)
+Array<T>::Array(): _elements(NULL),_arraySize(_default_size)
 {
 	std::cout << GREEN << "Default constructor called" << RESET << std::endl;
 }

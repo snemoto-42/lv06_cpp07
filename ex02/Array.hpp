@@ -23,4 +23,5 @@ class Array
 	private:
 		T* _elements;
 		unsigned int _arraySize;
+		static const unsigned int _default_size = 0;
 };
